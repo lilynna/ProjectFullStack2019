@@ -25,6 +25,6 @@ def logoutView(request):
 
 def list_book(request):
     context = dict()
-    context['book'] = Book.objects.all().order_by('category')
+    context['book'] = Book.objects.all().order_by('book')
     return render(request,'listbook.html',context)
 

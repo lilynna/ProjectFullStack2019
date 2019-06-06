@@ -2,14 +2,12 @@ from django.db import models
 
 # Create your models here.
 class Binding(models.Model):
-    name = name = models.CharField(max_length=255)
-
-   def __str__(self):
+    name = models.CharField(max_length=255)
+     def __str__(self):
         return self.name
 
 class Publisher(models.Model):
-    name = name = models.CharField(max_length=255)
-
+    name = models.CharField(max_length=255)
      def __str__(self):
         return self.name
 

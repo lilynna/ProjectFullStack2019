@@ -1,5 +1,6 @@
 from django.urls import path
 from .views import auth_page, home, logoutView
+from pos.views import list_book
 
 app_name = 'example_app'
 
