@@ -4,8 +4,14 @@ from django.db import models
 class Binding(models.Model):
     name = name = models.CharField(max_length=255)
 
+   def __str__(self):
+        return self.name
+
 class Publisher(models.Model):
     name = name = models.CharField(max_length=255)
+
+     def __str__(self):
+        return self.name
 
 class book(models.Model):
     title = models.CharField(max_length=255)

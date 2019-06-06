@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
+from .models import Book
 # Create your views here.
 
 @login_required
@@ -21,3 +22,9 @@ def home(request):
 def logoutView(request):
     logout(request)
     return redirect('/example')
+
+def list_book(request):
+    context = dict()
+    context['book'] = Book.objects.all().order_by('category')
+    return render(request,'listbook.html',context)
+
