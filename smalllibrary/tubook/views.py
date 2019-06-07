@@ -5,8 +5,10 @@ from .models import Book
 # Create your views here.
 
 @login_required
-def auth_page(request):
-    return render(request, 'example_app/auth_page.html')
+def Allbook(request):
+    context = dict()
+    context['Books'] = Book.objects.all()
+    return render(request, 'Allbook.html')
 
 def home(request):
     context = dict()
@@ -16,7 +18,7 @@ def home(request):
     else:
         context['greeting'] = 'Welcome Anonymous'
 
-    return render(request, 'example_app/home.html', context)
+    return render(request, 'home.html', context)
 
 @login_required
 def logoutView(request):

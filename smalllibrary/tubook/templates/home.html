@@ -1,11 +1,13 @@
 <html>
-    <body>
-        <p>{{ greeting }}</p>
-        {% if user.is_anonymous %}
-            <a href="{% url 'social:begin' 'tu' %}">Log in</a>
-        {% else %}
-            <a href="{% url 'example_app:auth_page' %}">Go to auth page</a>
-            <a href="{% url 'example_app:logout' %}">Log out</a>
-        {% endif %}
-    </body>
+
+<body>
+    <p>{{ greeting }}</p>
+    {% if user.is_anonymous %}
+    <a href="{% url 'social:begin' 'tu' %}">Log in</a>
+    {% else %}
+    <a href="{% url 'tubook:Allbook' %}">Allbook</a><br>
+    <a href="{% url 'tubook:logout' %}">Log out</a>
+    {% endif %}
+</body>
+
 </html>

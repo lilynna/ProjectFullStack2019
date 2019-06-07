@@ -1,0 +1,10 @@
+<html>
+
+<body>
+    Welcome {{ request.user }}<br>
+    {% for Book in Books %}
+    {{ Book.Title }}<br>
+    {% endfor %}
+</body>
+
+</html>
