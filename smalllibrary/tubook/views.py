@@ -1,14 +1,15 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
-from .models import Book
+from .models import Book,Transaction
+from django.contrib.auth.models import User
 # Create your views here.
 
 @login_required
 def Allbook(request):
     context = dict()
     context['Books'] = Book.objects.all()
-    return render(request, 'Allbook.html')
+    return render(request, 'Allbook.html',context)
 
 def home(request):
     context = dict()
@@ -23,10 +24,22 @@ def home(request):
 @login_required
 def logoutView(request):
     logout(request)
-    return redirect('/example')
+    return redirect('/tubook')
 
-def list_book(request):
-    context = dict()
-    context['book'] = Book.objects.all().order_by('book')
-    return render(request,'listbook.html',context)
-
+def detailbook(request, pk):
+    if request.method == 'POST':
+        try:
+            book = Book.objects.get(pk=pk)
+            Transaction.objects.create(
+                Book = book,
+                #Actor = User,
+                Action = "borrow",
+            )
+            return redirect('home')
+        except Exception as e:
+            print(e)
+            raise e
+    else:
+        book = Book.objects.get(pk=pk)
+        context = {'Book': book}
+        return render(request, 'detailbook.html',context)

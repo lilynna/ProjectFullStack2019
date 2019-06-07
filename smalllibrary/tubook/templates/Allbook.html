@@ -2,8 +2,9 @@
 
 <body>
     Welcome {{ request.user }}<br>
+    ListBook:<br>
     {% for Book in Books %}
-    {{ Book.Title }}<br>
+    Name: <a href="{% url 'tubook:detailbook' pk=Book.id %}"> {{ Book.title }} </a> <br>
     {% endfor %}
 </body>
 
